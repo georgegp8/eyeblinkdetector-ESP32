@@ -38,6 +38,27 @@
 ## 📦 Instalación (PC)
 
 1. Clona el repositorio:
-   ```bash
    git clone https://github.com/tu-usuario/blinkcare.git
    cd blinkcare
+2. Crea entorno virtual
+   python -m venv blinkvenv
+   blinkvenv\Scripts\activate  # En Windows
+3. Instala dependencias
+   pip install -r requirements.txt
+4. Ejecuta el script principal
+   python blink_detector.py
+
+## ⚙️ Comunicación con ESP32
+El script envía:
+- "PARPADEOS:X" → Muestra en LCD.
+- "ALERTA" → Enciende LED y buzzer durante 2 segundos.
+- El ESP32 ejecuta tareas simultáneas con FreeRTOS:
+- TareaSerial: escucha comandos.
+- TareaAlerta: maneja alerta visual/auditiva.
+- TareaLCDIdle: muestra "Esperando..." tras 5s de inactividad.
+
+## 🧪 Pruebas Realizadas
+- Validación de EAR (Eye Aspect Ratio) para diferentes personas.
+- Simulación de no parpadear (alerta activa).
+- Comunicación serial robusta con el ESP32.
+- Verificación física de LED, buzzer y LCD con código separado.
